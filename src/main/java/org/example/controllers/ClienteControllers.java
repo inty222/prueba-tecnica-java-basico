@@ -22,9 +22,18 @@ public class ClienteControllers {
         return clienteJPA.listarTodos();
 
     }
-    public void actualizar(Cliente cliente) {
-        clienteJPA.actualizar();
+    public void actualizar(long id, Cliente nuevosDatos) {
+        clienteJPA.actualizar(id, nuevosDatos);
     }
+    public void eliminar(long id){
+        clienteJPA.eliminar(id);
+    }
+    public List<Cliente> buscarPorCiudad(String ciudad) {
+        ClienteJPA clienteJPA = new ClienteJPA();
+        return clienteJPA.buscarPorCiudad(ciudad);
+    }
+
+
 }
 
 

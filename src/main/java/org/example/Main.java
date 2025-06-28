@@ -6,7 +6,6 @@ import jakarta.persistence.Persistence;
 import org.example.controllers.ClienteControllers;
 import org.example.entities.Cliente;
 import org.example.persistence.ClienteJPA;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -131,8 +130,8 @@ public class Main {
                         System.out.println("Este campo es obligatorio. Intente de nuevo.");
                     }
 
-                    Cliente cliente = new Cliente(nombre, primerApellido, segundoApellido, sexo, ciudad, fechaDeNacimiento, telefono, email);
-                    clienteControllers.agregar(cliente);
+                    Cliente cliente1 = new Cliente(nombre, primerApellido, segundoApellido, sexo, ciudad, fechaDeNacimiento, telefono, email);
+                    clienteControllers.agregar(cliente1);
                     System.out.println("Cliente guardado.");
 
 
@@ -150,122 +149,132 @@ public class Main {
                     }
                     break;
                 case 3:
-
                     System.out.print("Ingrese el id del cliente que quiere modificar: ");
                     long id = s.nextLong();
                     s.nextLine();
 
-                    ActualizarClienteJPA clienteJPA = new ActualizarClienteJPA(emf);
-                    Cliente cliente = clienteJPA.buscarClientePorId(id);
+                    String nuevoNombre;
+                    while (true) {
+                        System.out.print("Ingrese su nuevo nombre: ");
+                        nuevoNombre = s.nextLine();
+                        if (!nuevoNombre.isEmpty()) break;
+                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                    }
 
-                    if (cliente != null) {
-                        String nuevoNombre;
-                        while (true) {
-                            System.out.print("Ingrese su nuevo nombre: ");
-                            nuevoNombre = s.nextLine();
-                            if (!nuevoNombre.isEmpty()) break;
-                            System.out.println("Este campo es obligatorio. Intente de nuevo.");
-                        }
-                        String nuevoPrimerApellido;
-                        while (true) {
-                            System.out.print("Ingrese su nuevo Primer Apellido: ");
-                            nuevoPrimerApellido = s.nextLine();
-                            if (!nuevoPrimerApellido.isEmpty()) break;
-                            System.out.println("Este campo es obligatorio. Intente de nuevo.");
-                        }
-                        String nuevoSegundoApellido;
-                        while (true) {
-                            System.out.print("Ingrese su nuevo Segundo Apellido: ");
-                            nuevoSegundoApellido = s.nextLine();
-                            if (!nuevoSegundoApellido.isEmpty()) break;
-                            System.out.println("Este campo es obligatorio. Intente de nuevo.");
-                        }
-                        String nuevaCiudad;
-                        while (true) {
-                            System.out.print("Ingrese su nueva ciudad: ");
-                            nuevaCiudad = s.nextLine();
-                            if (!nuevaCiudad.isEmpty()) break;
-                            System.out.println("Este campo es obligatorio. Intente de nuevo.");
-                        }
-                        String nuevoTelefono;
-                        while (true) {
-                            System.out.print("Ingrese su nuevo telefono: ");
-                            nuevoTelefono = s.nextLine();
-                            if (!nuevoTelefono.isEmpty()) break;
-                            System.out.println("Este campo es obligatorio. Intente de nuevo.");
-                        }
-                        String nuevaEmail;
-                        while (true) {
-                            System.out.print("Ingrese su nueva email ");
-                            nuevaEmail = s.nextLine();
-                            if (!nuevaEmail.isEmpty()) break;
-                            System.out.println("Este campo es obligatorio. Intente de nuevo.");
-                        }
-                        String nuevoSexo = null;
-                        while (nuevoSexo == null) {
-                            System.out.println("Elige el sexo:");
-                            System.out.println("1. Masculino");
-                            System.out.println("2. Femenino");
-                            System.out.println("3. Otro");
-                            System.out.print("Opción: ");
+                    String nuevoPrimerApellido;
+                    while (true) {
+                        System.out.print("Ingrese su nuevo Primer Apellido: ");
+                        nuevoPrimerApellido = s.nextLine();
+                        if (!nuevoPrimerApellido.isEmpty()) break;
+                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                    }
 
-                            String elige = s.nextLine();
+                    String nuevoSegundoApellido;
+                    while (true) {
+                        System.out.print("Ingrese su nuevo Segundo Apellido: ");
+                        nuevoSegundoApellido = s.nextLine();
+                        if (!nuevoSegundoApellido.isEmpty()) break;
+                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                    }
 
-                            switch (elige) {
-                                case "1":
-                                    nuevoSexo = "Masculino";
-                                    break;
-                                case "2":
-                                    nuevoSexo = "Femenino";
-                                    break;
-                                case "3":
-                                    nuevoSexo = "Otro";
-                                    break;
-                                default:
-                                    System.out.println("Opción inválida. Inténtalo de nuevo.");
-                            }
-                        }
+                    String nuevaCiudad;
+                    while (true) {
+                        System.out.print("Ingrese su nueva ciudad: ");
+                        nuevaCiudad = s.nextLine();
+                        if (!nuevaCiudad.isEmpty()) break;
+                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                    }
 
-                        LocalDate nuevaFechaDeNacimiento = null;
-                        while (true) {
-                            System.out.print("Ingrese su nueva fecha de nacimiento (YYYY-MM-DD): ");
-                            String fechaIngresada = s.nextLine();
+                    String nuevoTelefono;
+                    while (true) {
+                        System.out.print("Ingrese su nuevo teléfono: ");
+                        nuevoTelefono = s.nextLine();
+                        if (!nuevoTelefono.isEmpty()) break;
+                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                    }
 
-                            try {
-                                nuevaFechaDeNacimiento = LocalDate.parse(fechaIngresada);
+                    String nuevaEmail;
+                    while (true) {
+                        System.out.print("Ingrese su nuevo email: ");
+                        nuevaEmail = s.nextLine();
+                        if (!nuevaEmail.isEmpty()) break;
+                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                    }
+
+                    String nuevoSexo = null;
+                    while (nuevoSexo == null) {
+                        System.out.println("Elige el sexo:");
+                        System.out.println("1. Masculino");
+                        System.out.println("2. Femenino");
+                        System.out.println("3. Otro");
+                        System.out.print("Opción: ");
+                        String elige = s.nextLine();
+                        switch (elige) {
+                            case "1":
+                                nuevoSexo = "Masculino";
                                 break;
-                            } catch (Exception e) {
-                                System.out.println("Formato inválido. Intente de nuevo (formato correcto: YYYY-MM-DD).");
-                            }
+                            case "2":
+                                nuevoSexo = "Femenino";
+                                break;
+                            case "3":
+                                nuevoSexo = "Otro";
+                                break;
+                            default:
+                                System.out.println("Opción inválida. Inténtalo de nuevo.");
                         }
+                    }
 
-                        // Actualizamos el objeto cliente con los nuevos valores
-                        cliente.setNombre(nuevoNombre);
-                        cliente.setPrimerApellido(nuevoPrimerApellido);
-                        cliente.setSegundoApellido(nuevoSegundoApellido);
-                        cliente.setCiudad(nuevaCiudad);
-                        cliente.setEmail(nuevaEmail);
-                        cliente.setTelefono(nuevoTelefono);
-                        cliente.setFechaDeNacimiento(nuevaFechaDeNacimiento);
-                        cliente.setSexo(nuevoSexo);
-
-                        // Guardamos los cambios en la base de datos con JPA
-                        clienteJPA.guardarCambios(cliente);
-
-                        System.out.println("Cliente actualizado con éxito");
-                    } else {
-                        System.out.println("Cliente no encontrado");
+                    LocalDate nuevaFechaDeNacimiento;
+                    while (true) {
+                        System.out.print("Ingrese su nueva fecha de nacimiento (YYYY-MM-DD): ");
+                        String fechaIngresada = s.nextLine();
+                        try {
+                            nuevaFechaDeNacimiento = LocalDate.parse(fechaIngresada);
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Formato inválido. Intente de nuevo.");
+                        }
                     }
 
 
+                    Cliente nuevosDatos = new Cliente(
+                            nuevoNombre,
+                            nuevoPrimerApellido,
+                            nuevoSegundoApellido,
+                            nuevoSexo,
+                            nuevaCiudad,
+                            nuevaFechaDeNacimiento,
+                            nuevoTelefono,
+                            nuevaEmail
+                    );
+
+                    clienteControllers.actualizar(id, nuevosDatos);
+
+                    break;
+                case 4:
+                    System.out.print("Ingrese el ID del cliente que desea eliminar: ");
+                    long idEliminar = s.nextLong();
+                    s.nextLine();
+
+                    clienteControllers.eliminar(idEliminar);
                     break;
 
-                case 4:
-                    eliminarCliente();
-                    break;
-                case 5:
-                    buscarClientePorCiudad();
-                    break;
+
+                case 5: {
+                    System.out.print("Ingrese la ciudad: ");
+                    String c = s.nextLine();
+                    clientes = clienteControllers.buscarPorCiudad(c);
+
+                    if (clientes.isEmpty()) {
+                        System.out.println("No se encontraron clientes en la ciudad: " + c);
+                    } else {
+                        for (Cliente cliente : clientes) {
+                            System.out.println(cliente);
+                        }
+                    }
+                }
+                        break;
+
                 case 6:
                     return;
 
@@ -277,45 +286,6 @@ public class Main {
         }
     }
 
-    private static void buscarClientePorCiudad() {
-        System.out.print("Ingrese la ciudad: ");
-        String ciudad = s.nextLine();
-
-        EntityManager em = emf.createEntityManager();
-        List<Cliente> clientes = em.createQuery(
-                        "SELECT c FROM Cliente c WHERE c.ciudad = :ciudad", Cliente.class)
-                .setParameter("ciudad", ciudad)
-                .getResultList();
-
-        if (clientes.isEmpty()) {
-            System.out.println("No se encontraron clientes en la ciudad: " + ciudad);
-        } else {
-            for (Cliente cliente : clientes) {
-                System.out.println(cliente);
-
-            }
-
-
-        }
-        em.close();
-    }
-
-    private static void eliminarCliente() {
-        System.out.println("ingresa el id del cliente que quiere eliminar");
-        long id = s.nextLong();
-        EntityManager em = emf.createEntityManager();
-        Cliente cliente = em.find(Cliente.class, id);
-        if (cliente != null) {
-            System.out.println("cliente eliminado con exito");
-
-            em.getTransaction().begin();
-            em.remove(cliente);
-
-            em.getTransaction().commit();
-
-        } else System.out.println("cliente no encontrado");
-        em.close();
-    }
 }
 
 

@@ -78,6 +78,10 @@ public class ClienteJPA {
         em.close();
         return lista;
     }
+
+
+
+
 }
 
 
