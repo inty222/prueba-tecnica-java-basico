@@ -17,10 +17,11 @@ public class Main {
     private static List<Cliente> clientes = new ArrayList<>();
     private static Scanner s = new Scanner(System.in);
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUnidad");
+
     public static void main(String[] args) {
         ClienteControllers clienteControllers = new ClienteControllers();
 
-    int opcion = 0;
+        int opcion = 0;
         while (true) {
             System.out.println("1. Agregar un nuevo cliente:");
             System.out.println("2. Listar todos los clientes:");
@@ -261,10 +262,10 @@ public class Main {
 
                 case 4:
                     eliminarCliente();
-                break;
+                    break;
                 case 5:
                     buscarClientePorCiudad();
-                break;
+                    break;
                 case 6:
                     return;
 
@@ -275,6 +276,7 @@ public class Main {
             }
         }
     }
+
     private static void buscarClientePorCiudad() {
         System.out.print("Ingrese la ciudad: ");
         String ciudad = s.nextLine();
@@ -295,26 +297,26 @@ public class Main {
 
 
         }
-     em.close();
+        em.close();
     }
 
     private static void eliminarCliente() {
         System.out.println("ingresa el id del cliente que quiere eliminar");
         long id = s.nextLong();
         EntityManager em = emf.createEntityManager();
-        Cliente cliente = em.find(Cliente.class,id);
-   if(cliente!=null) {
-       System.out.println("cliente eliminado con exito");
+        Cliente cliente = em.find(Cliente.class, id);
+        if (cliente != null) {
+            System.out.println("cliente eliminado con exito");
 
-        em.getTransaction().begin();
-        em.remove(cliente);
+            em.getTransaction().begin();
+            em.remove(cliente);
 
-        em.getTransaction().commit();
+            em.getTransaction().commit();
 
-   } else System.out.println("cliente no encontrado");
-   em.close();
+        } else System.out.println("cliente no encontrado");
+        em.close();
     }
-
+}
 
 
 
