@@ -1,11 +1,8 @@
 package org.example;
-
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.example.controllers.ClienteControllers;
 import org.example.entities.Cliente;
-import org.example.persistence.ClienteJPA;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +66,7 @@ public class Main {
                         System.out.println("1. Masculino");
                         System.out.println("2. Femenino");
                         System.out.println("3. Otro");
-                        System.out.print("Opción: ");
+                        System.out.print("Opcion: ");
 
                         String elige = s.nextLine();
 
@@ -84,7 +81,7 @@ public class Main {
                                 sexo = "Otro";
                                 break;
                             default:
-                                System.out.println("Opción inválida. Inténtalo de nuevo.");
+                                System.out.println("Opción invalida. Intente de nuevo.");
                         }
                     }
 
@@ -98,7 +95,7 @@ public class Main {
                             fechaDeNacimiento = LocalDate.parse(fechaIngresada);
                             break;
                         } catch (Exception e) {
-                            System.out.println("Formato inválido. Intente de nuevo (formato correcto: YYYY-MM-DD).");
+                            System.out.println("Formato invalido. Intente de nuevo (formato correcto: YYYY-MM-DD).");
                         }
                     }
 
@@ -207,7 +204,7 @@ public class Main {
                         System.out.println("1. Masculino");
                         System.out.println("2. Femenino");
                         System.out.println("3. Otro");
-                        System.out.print("Opción: ");
+                        System.out.print("Opcion: ");
                         String elige = s.nextLine();
                         switch (elige) {
                             case "1":
@@ -220,7 +217,7 @@ public class Main {
                                 nuevoSexo = "Otro";
                                 break;
                             default:
-                                System.out.println("Opción inválida. Inténtalo de nuevo.");
+                                System.out.println("Opcion invalida. Intente de nuevo.");
                         }
                     }
 
@@ -232,12 +229,12 @@ public class Main {
                             nuevaFechaDeNacimiento = LocalDate.parse(fechaIngresada);
                             break;
                         } catch (Exception e) {
-                            System.out.println("Formato inválido. Intente de nuevo.");
+                            System.out.println("Formato invalido. Intente de nuevo.");
                         }
                     }
 
 
-                    Cliente nuevosDatos = new Cliente(
+                    Cliente nuevoCliente = new Cliente(
                             nuevoNombre,
                             nuevoPrimerApellido,
                             nuevoSegundoApellido,
@@ -248,7 +245,7 @@ public class Main {
                             nuevaEmail
                     );
 
-                    clienteControllers.actualizar(id, nuevosDatos);
+                    clienteControllers.actualizar(id,nuevoCliente);
 
                     break;
                 case 4:
@@ -263,7 +260,7 @@ public class Main {
                 case 5: {
                     System.out.print("Ingrese la ciudad: ");
                     String c = s.nextLine();
-                    clientes = clienteControllers.buscarPorCiudad(c);
+                    clientes = clienteControllers.buscarCiudad(c);
 
                     if (clientes.isEmpty()) {
                         System.out.println("No se encontraron clientes en la ciudad: " + c);

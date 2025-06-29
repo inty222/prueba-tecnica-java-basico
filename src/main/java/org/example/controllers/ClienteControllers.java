@@ -1,16 +1,8 @@
 package org.example.controllers;
-//crear las funciones controladoras que reciben y verifican los datos
-
 import org.example.entities.Cliente;
 import org.example.persistence.ClienteJPA;
-
 import java.util.List;
 
-//funcion agregar cliente:
-            //instanciar un cliente
-            //pedir cada uno de los datos
-            //llamar a la funcion que lo va a insertar en la base de datos
-            //
 public class ClienteControllers {
     ClienteJPA clienteJPA = new ClienteJPA();
 
@@ -22,15 +14,15 @@ public class ClienteControllers {
         return clienteJPA.listarTodos();
 
     }
-    public void actualizar(long id, Cliente nuevosDatos) {
-        clienteJPA.actualizar(id, nuevosDatos);
+    public void actualizar(long id, Cliente nuevoCliente) {
+        clienteJPA.actualizar(id, nuevoCliente);
     }
     public void eliminar(long id){
         clienteJPA.eliminar(id);
     }
-    public List<Cliente> buscarPorCiudad(String ciudad) {
+    public List<Cliente> buscarCiudad(String ciudad) {
         ClienteJPA clienteJPA = new ClienteJPA();
-        return clienteJPA.buscarPorCiudad(ciudad);
+        return clienteJPA.buscarCiudad(ciudad);
     }
 
 

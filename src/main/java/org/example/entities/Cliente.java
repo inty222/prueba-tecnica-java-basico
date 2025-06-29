@@ -1,12 +1,9 @@
 package org.example.entities;
 import java.time.LocalDate;
 import jakarta.persistence.*;
-
-
 @Table(name = "Clientes")
 @Entity
 public class Cliente {
-    enum sexo{M,F,O}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

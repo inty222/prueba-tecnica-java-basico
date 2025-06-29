@@ -1,8 +1,6 @@
 package org.example.persistence;
-
 import jakarta.persistence.EntityManager;
 import org.example.entities.Cliente;
-
 import java.util.List;
 
 public class ClienteJPA {
@@ -22,38 +20,31 @@ public class ClienteJPA {
         return lista;
     }
 
-    public void actualizar(long id, Cliente nuevosDatos) {
+    public void actualizar(long id, Cliente nuevoCliente) {
         EntityManager em = ConfigJPA.getEntityManager();
-        Cliente clienteExistente = em.find(Cliente.class, id);
+        Cliente cliente = em.find(Cliente.class, id);
 
-        if (clienteExistente != null) {
+        if (cliente != null) {
             em.getTransaction().begin();
 
-            clienteExistente.setNombre(nuevosDatos.getNombre());
-            clienteExistente.setPrimerApellido(nuevosDatos.getPrimerApellido());
-            clienteExistente.setSegundoApellido(nuevosDatos.getSegundoApellido());
-            clienteExistente.setSexo(nuevosDatos.getSexo());
-            clienteExistente.setFechaDeNacimiento(nuevosDatos.getFechaDeNacimiento());
-            clienteExistente.setCiudad(nuevosDatos.getCiudad());
-            clienteExistente.setTelefono(nuevosDatos.getTelefono());
-            clienteExistente.setEmail(nuevosDatos.getEmail());
+            cliente.setNombre(nuevoCliente.getNombre());
+            cliente.setPrimerApellido(nuevoCliente.getPrimerApellido());
+            cliente.setSegundoApellido(nuevoCliente.getSegundoApellido());
+            cliente.setSexo(nuevoCliente.getSexo());
+            cliente.setFechaDeNacimiento(nuevoCliente.getFechaDeNacimiento());
+            cliente.setCiudad(nuevoCliente.getCiudad());
+            cliente.setTelefono(nuevoCliente.getTelefono());
+            cliente.setEmail(nuevoCliente.getEmail());
 
-            em.merge(clienteExistente);
+            em.merge(cliente);
             em.getTransaction().commit();
 
-            System.out.println("Cliente actualizado con éxito.");
+            System.out.println("Cliente actualizado con exito.");
         } else {
             System.out.println("Cliente no encontrado con ID: " + id);
         }
 
         em.close();
-    }
-
-    public Cliente buscarPorId(long id) {
-        EntityManager em = ConfigJPA.getEntityManager();
-        Cliente cliente = em.find(Cliente.class, id);
-        em.close();
-        return cliente;
     }
 
     public void eliminar(long id) {
@@ -70,7 +61,7 @@ public class ClienteJPA {
         em.close();
     }
 
-    public List<Cliente> buscarPorCiudad(String ciudad) {
+    public List<Cliente> buscarCiudad(String ciudad) {
         EntityManager em = ConfigJPA.getEntityManager();
         List<Cliente> lista = em.createQuery("FROM Cliente c WHERE c.ciudad = :ciudad", Cliente.class)
                 .setParameter("ciudad", ciudad)
@@ -83,19 +74,6 @@ public class ClienteJPA {
 
 
 }
-
-
-//los metodos que tocan la base de datos
-
-    //funcion que inserta en cliente en base de datos
-    //agregar cliente
-
-    // tiene que recibir un objeto cliente
-    // tiene que crear un entity manager usando ConfigJPA.getEntityManager
-    // hacer el begin
-    // hacer la accion correspondente
-    // hacer el commit
-    //close
 
 
 
