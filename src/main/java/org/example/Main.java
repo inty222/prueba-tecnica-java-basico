@@ -21,7 +21,7 @@ public class Main {
         while (true) {
             System.out.println("1. Agregar un nuevo cliente:");
             System.out.println("2. Listar todos los clientes:");
-            System.out.println("3. Actualizar información de un cliente");
+            System.out.println("3. Actualizar informacion de un cliente");
             System.out.println("4. Eliminar un cliente:");
             System.out.println("5. Buscar cliente por ciudad");
             System.out.println("6. Salir: ");
@@ -35,30 +35,30 @@ public class Main {
 
                     String nombre;
                     while (true) {
-                        System.out.print("Ingrese su nombre: ");
+                        System.out.print("Ingresa tu nombre: ");
                         nombre = s.nextLine();
                         if (!nombre.isEmpty()) {
                             break;
                         }
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
                     String primerApellido;
                     while (true) {
-                        System.out.print("Ingrese su Primer Apellido: ");
+                        System.out.print("Ingresa tu Primer Apellido: ");
                         primerApellido = s.nextLine();
                         if (!primerApellido.isEmpty()) {
                             break;
                         }
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
                     String segundoApellido;
                     while (true) {
-                        System.out.print("Ingrese su Segundo Apellido: ");
+                        System.out.print("Ingresa tu Segundo Apellido: ");
                         segundoApellido = s.nextLine();
                         if (!segundoApellido.isEmpty()) {
                             break;
                         }
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
                     String sexo = null;
                     while (sexo == null) {
@@ -81,50 +81,50 @@ public class Main {
                                 sexo = "Otro";
                                 break;
                             default:
-                                System.out.println("Opción invalida. Intente de nuevo.");
+                                System.out.println("Opcion invalida. Intenta de nuevo.");
                         }
                     }
 
                     LocalDate fechaDeNacimiento = null;
 
                     while (true) {
-                        System.out.print("Ingrese su fecha de nacimiento (YYYY-MM-DD): ");
+                        System.out.print("Ingresa tu fecha de nacimiento (YYYY-MM-DD): ");
                         String fechaIngresada = s.nextLine();
 
                         try {
                             fechaDeNacimiento = LocalDate.parse(fechaIngresada);
                             break;
                         } catch (Exception e) {
-                            System.out.println("Formato invalido. Intente de nuevo (formato correcto: YYYY-MM-DD).");
+                            System.out.println("Formato invalido. Intenta de nuevo (formato correcto: YYYY-MM-DD).");
                         }
                     }
 
                     String ciudad;
                     while (true) {
-                        System.out.print("Ingrese su ciudad: ");
+                        System.out.print("Ingresa tu ciudad: ");
                         ciudad = s.nextLine();
                         if (!ciudad.isEmpty()) {
                             break;
                         }
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
                     String telefono;
                     while (true) {
-                        System.out.print("Ingrese su telefono: ");
+                        System.out.print("Ingresa tu telefono: ");
                         telefono = s.nextLine();
                         if (!telefono.isEmpty()) {
                             break;
                         }
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
                     String email;
                     while (true) {
-                        System.out.print("Ingrese su email ");
+                        System.out.print("Ingresa tu email ");
                         email = s.nextLine();
                         if (!email.isEmpty()) {
                             break;
                         }
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
 
                     Cliente cliente1 = new Cliente(nombre, primerApellido, segundoApellido, sexo, ciudad, fechaDeNacimiento, telefono, email);
@@ -146,56 +146,56 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.print("Ingrese el id del cliente que quiere modificar: ");
+                    System.out.print("Ingresa el id del cliente que quieres modificar: ");
                     long id = s.nextLong();
                     s.nextLine();
 
                     String nuevoNombre;
                     while (true) {
-                        System.out.print("Ingrese su nuevo nombre: ");
+                        System.out.print("Ingresa tu nuevo nombre: ");
                         nuevoNombre = s.nextLine();
                         if (!nuevoNombre.isEmpty()) break;
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. Intenta de nuevo.");
                     }
 
                     String nuevoPrimerApellido;
                     while (true) {
-                        System.out.print("Ingrese su nuevo Primer Apellido: ");
+                        System.out.print("Ingresa tu nuevo Primer Apellido: ");
                         nuevoPrimerApellido = s.nextLine();
                         if (!nuevoPrimerApellido.isEmpty()) break;
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. Intenta de nuevo.");
                     }
 
                     String nuevoSegundoApellido;
                     while (true) {
-                        System.out.print("Ingrese su nuevo Segundo Apellido: ");
+                        System.out.print("Ingresa tu nuevo Segundo Apellido: ");
                         nuevoSegundoApellido = s.nextLine();
                         if (!nuevoSegundoApellido.isEmpty()) break;
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. Intenta de nuevo.");
                     }
 
                     String nuevaCiudad;
                     while (true) {
-                        System.out.print("Ingrese su nueva ciudad: ");
+                        System.out.print("Ingresa tu nueva ciudad: ");
                         nuevaCiudad = s.nextLine();
                         if (!nuevaCiudad.isEmpty()) break;
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
 
                     String nuevoTelefono;
                     while (true) {
-                        System.out.print("Ingrese su nuevo teléfono: ");
+                        System.out.print("Ingresa tu nuevo telefono: ");
                         nuevoTelefono = s.nextLine();
                         if (!nuevoTelefono.isEmpty()) break;
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
 
                     String nuevaEmail;
                     while (true) {
-                        System.out.print("Ingrese su nuevo email: ");
+                        System.out.print("Ingresa tu nuevo email: ");
                         nuevaEmail = s.nextLine();
                         if (!nuevaEmail.isEmpty()) break;
-                        System.out.println("Este campo es obligatorio. Intente de nuevo.");
+                        System.out.println("Este campo es obligatorio. intenta de nuevo");
                     }
 
                     String nuevoSexo = null;
@@ -217,19 +217,19 @@ public class Main {
                                 nuevoSexo = "Otro";
                                 break;
                             default:
-                                System.out.println("Opcion invalida. Intente de nuevo.");
+                                System.out.println("Opcion invalida. Intenta de nuevo.");
                         }
                     }
 
                     LocalDate nuevaFechaDeNacimiento;
                     while (true) {
-                        System.out.print("Ingrese su nueva fecha de nacimiento (YYYY-MM-DD): ");
+                        System.out.print("Ingresa tu nueva fecha de nacimiento (YYYY-MM-DD): ");
                         String fechaIngresada = s.nextLine();
                         try {
                             nuevaFechaDeNacimiento = LocalDate.parse(fechaIngresada);
                             break;
                         } catch (Exception e) {
-                            System.out.println("Formato invalido. Intente de nuevo.");
+                            System.out.println("Formato invalido. Intenta de nuevo.");
                         }
                     }
 
@@ -249,7 +249,7 @@ public class Main {
 
                     break;
                 case 4:
-                    System.out.print("Ingrese el ID del cliente que desea eliminar: ");
+                    System.out.print("Ingresa el ID del cliente que deseas eliminar: ");
                     long idEliminar = s.nextLong();
                     s.nextLine();
 
@@ -258,12 +258,12 @@ public class Main {
 
 
                 case 5: {
-                    System.out.print("Ingrese la ciudad: ");
+                    System.out.print("Ingresa la ciudad: ");
                     String c = s.nextLine();
                     clientes = clienteControllers.buscarCiudad(c);
 
                     if (clientes.isEmpty()) {
-                        System.out.println("No se encontraron clientes en la ciudad: " + c);
+                        System.out.println("cliente no encontrado en la ciudad: " + c);
                     } else {
                         for (Cliente cliente : clientes) {
                             System.out.println(cliente);
